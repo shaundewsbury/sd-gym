@@ -5,7 +5,7 @@ export const BookingsContext = createContext();
 export const BookingsContextProvider = BookingsContext.Provider;
 export const useBookingsContext = () => useContext(BookingsContext);
 
-export const SearchProvider = ({ children }) => {
+export const BookingsProvider = ({ children }) => {
   const [myBookings, setMyBookings] = useLocalStorage("bookings", []);
 
   const addNewBooking = (booking) =>

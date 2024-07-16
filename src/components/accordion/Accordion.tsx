@@ -3,27 +3,23 @@ import { MdChevronRight } from "react-icons/md";
 
 import { AccordionProps } from "./types";
 
-const Accordion = ({ className, children, open, title }: AccordionProps) => {
+const Accordion = ({ children, open, title }: AccordionProps) => {
   const [active, setActive] = useState(open);
 
   return (
-    <div className={`ui-accordion ${className}`}>
+    <div className="ui-accordion">
       <button
         className="flex gap-2 items-center"
         onClick={() => setActive(!active)}
       >
-        <h2 className="text-2xl font-bold text-white hover:text-slate-300">
-          {title}
-        </h2>
+        <h2 className="text-l font-bold hover:text-slate-300">{title}</h2>
         <MdChevronRight
           className={`${
             active ? "rotate-[-90deg]" : "rotate-90"
-          } w-6 h-6 text-white transition-all`}
+          } w-6 h-6 transition-all`}
         />
       </button>
-      <div className={`${active ? "block mt-6" : "hidden"} text-white`}>
-        {children}
-      </div>
+      <div className={`${active ? "block mt-4" : "hidden"}`}>{children}</div>
     </div>
   );
 };

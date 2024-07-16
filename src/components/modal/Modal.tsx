@@ -22,17 +22,23 @@ const Modal = ({ className, children, isOpen, onClose, title }: ModalProps) => {
 
   return (
     <div
-      className={`ui-modal ${
-        !isModalOpen && "hidden"
-      } fixed top-0 bottom-0 left-0 right-0 z-100 ${className}`}
+      className={`ui-modal fixed top-0 bottom-0 left-0 right-0 z-100 text-slate-900 ${
+        !isModalOpen ? "invisible" : "visible"
+      }  ${className}`}
     >
       <div
-        className="absolute top-0 bottom-0 left-0 right-0 bg-black opacity-90"
+        className={`transition-all delay-100 ease-in absolute top-0 bottom-0 left-0 right-0 opacity-90 ${
+          !isModalOpen ? "opacity-0" : "bg-black"
+        }`}
         onClick={closeModalClickHandler}
       ></div>
       <div
-        className="
-         absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] pb-4 w-[90%] md:w-auto md:min-w-[500px] bg-slate-200 rounded-xl drop-shadow-lg max-h-[80%] overflow-auto"
+        className={`
+         absolute left-[50%] translate-x-[-50%] translate-y-[-50%] pb-4 w-[90%] md:w-auto md:min-w-[500px] bg-slate-200 rounded-xl drop-shadow-lg max-h-[80%] overflow-auto transition-all delay-300 ease-in	 ${
+           !isModalOpen
+             ? "invisible opacity-0 top-[100%]"
+             : "visible opacity-100 top-[50%] "
+         }`}
       >
         <div className="shadow mb-4">
           <div className="flex justify-between p-4">
